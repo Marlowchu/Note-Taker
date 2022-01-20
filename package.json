@@ -1,16 +1,26 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "chuck",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "uuid": "^8.3.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marlowchu/Note-Taker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Marlowchu/Note-Taker/issues"
+  },
+  "homepage": "https://github.com/Marlowchu/Note-Taker#readme",
+  "description": ""
 }
+
