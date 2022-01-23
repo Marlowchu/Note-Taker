@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const noteData = require('./db/db.json');
 
-// selecting port
+// port options varible
 const PORT = process.env.PORT || 3001;
 
 // express varible for easy use
@@ -66,10 +66,38 @@ app.post('/api/notes', (req, res) =>{
   } else {
     res.error('Error in adding tip');
   }
-  res.json("newTip");
+// timer to wait long enough for the read and append
+  setTimeout(() => res.json("newTip"),100)
+  
     })
 
 
+   // API route that recieves id of note to be deleted
+app.delete('/api/notes*', (req, res) =>{
+
+     
+// grab the id and drop the "/"
+    const remove = req.params [0];
+
+    const Nremove = remove.substr(1)
+    
+    if (req.params) {
+      const newId = Nremove
+    
+      console.log (newId) 
+      
+      // funtion to remove selected
+      deleteAndUpdate(newId, './db/db.json');
+  
+    } else {
+      res.error('Error in deleting');
+    }
+
+    setTimeout(() => res.json("Thanks"),250)
+
+});
+    
+       
 // Wildcard api route that returns index page
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/index.html'))
@@ -97,6 +125,31 @@ const readAndAppend = (content, file) => {
     } else {
       const parsedData = JSON.parse(data);
       parsedData.push(content);
+      writeToFile(file, parsedData);
+    }
+  });
+};
+
+
+//  read from db then push another value to db 
+const deleteAndUpdate = (id, file) => {
+  const select = id
+  fs.readFile(file, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedData = JSON.parse(data);
+
+      // find the index of the sent over id
+      const index = parsedData.findIndex((element) => element.id === select)
+        
+      // console.log(index)
+
+      // remove the prior found index
+      parsedData.splice(index,1)
+
+      // console.log(parsedData)
+      
       writeToFile(file, parsedData);
     }
   });

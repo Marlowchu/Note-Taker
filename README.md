@@ -6,7 +6,7 @@
 
   ## Description
 
-  This app uses node.js to interact with client to create notes. on the client side the user enters a title and text in the fields then hits the submit button. the data is then sent to the server where it is saved in a db file. the client then calls the server to get the db list and displays it.
+  This app uses node.js to interact with client to create notes. on the client side the user enters a title and text in the fields then hits the submit button. the data is then sent to the server where it is saved in a db file. the client then calls the server to get the db list and displays it. To remove a note the user hits the delete button.
 
   link to deployed program on Heroku (https://note-taker-marlow.herokuapp.com/)
 
